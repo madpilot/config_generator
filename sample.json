@@ -1,0 +1,91 @@
+{
+  "filePath": "/config.dat",
+  "fields": {
+    "encryption": {
+      "type": "bitmask",
+      "length": 3,
+      "default": 7
+    },
+    "dhcp": {
+      "type": "boolean",
+      "default": true
+    },
+    "syslog": {
+      "type": "boolean",
+      "default": false
+    },
+    "mqttAuthMode": {
+      "type": "bitmask",
+      "length": 2,
+      "default": 0
+    },
+    "mqttTLS": {
+      "type": "boolean",
+      "default": false
+    },
+    "mqttPort": {
+      "type": "uint16",
+      "default": 1883
+    },
+    "syslogPort": {
+      "type": "uint16",
+      "default": 514
+    },
+    "syslogLevel": {
+      "type": "uint8",
+      "default": 6
+    },
+    "ssid": {
+      "type": "string",
+      "default": ""
+    },
+    "passkey": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttServerName": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttUsername": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttPassword": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttFingerprint": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttPublishChannel": {
+      "type": "string",
+      "default": ""
+    },
+    "mqttSubscribeChannel": {
+      "type": "string",
+      "default": ""
+    },
+    "syslogHost": {
+      "type": "string",
+      "default": ""
+    },
+    "staticIP": {
+      "type": "string",
+      "default": ""
+    },
+    "staticDNS": {
+      "type": "string",
+      "default": ""
+    },
+    "staticGateway": {
+      "type": "string",
+      "default": ""
+    },
+    "staticSubnet": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
