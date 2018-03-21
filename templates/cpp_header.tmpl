@@ -19,35 +19,13 @@ class Config {
 
     // Getters
     {{ range $key, $value := . -}}
-    char* get_{{$key}}();
+    {{ getter $key $value }}
     {{ end }}
-
-    char* get_ssid();
-    char* get_passkey();
-    int get_encryption();
-    char* get_deviceName();
-
-    bool get_dhcp();
-    char* get_staticIP();
-    char* get_staticDNS();
-    char* get_staticGateway();
-    char* get_staticSubnet();
 
     // Setters
     {{ range $key, $value := . -}}
-    void set_{{$key}}(const char* val);
+    {{ setter $key $value }}
     {{ end }}
-
-    void set_ssid(const char* val);
-    void set_passkey(const char* val);
-    void set_encryption(int val);
-    void set_deviceName(const char* val);
-
-    void set_dhcp(bool val);;
-    void set_staticIP(const char* val);
-    void set_staticDNS(const char* val);
-    void set_staticGateway(const char* val);
-    void set_staticSubnet(const char* val);
 
     config_result write();
     config_result read();
@@ -57,16 +35,9 @@ class Config {
     int estimateSerializeBufferLength();
 
   private:
-    char* ssid;
-    char* passkey;
-    int encryption;
-    char* deviceName;
-
-    bool dhcp;
-    char* staticIP;
-    char* staticDNS;
-    char* staticGateway;
-    char* staticSubnet;
+    {{ range $key, $value := . -}}
+    {{ type $key $value }}
+    {{ end }}
 
     bool allocString(char **dest, const char *val);
     config_result deserializeString(unsigned char *buffer, int bufferlen, char **string, int *offset);

@@ -20,5 +20,3 @@ type UInt8 struct {
 type String struct {
 	Default string `json:"default"`
 }
-
-
