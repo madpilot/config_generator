@@ -18,12 +18,12 @@ class Config {
     Config();
 
     // Getters
-    {{ range $key, $value := . -}}
+    {{ range $key, $value := .Fields -}}
     {{ getter $key $value }}
     {{ end }}
 
     // Setters
-    {{ range $key, $value := . -}}
+    {{ range $key, $value := .Fields -}}
     {{ setter $key $value }}
     {{ end }}
 
@@ -35,7 +35,7 @@ class Config {
     int estimateSerializeBufferLength();
 
   private:
-    {{ range $key, $value := . -}}
+    {{ range $key, $value := .Fields -}}
     {{ type $key $value }}
     {{ end }}
 

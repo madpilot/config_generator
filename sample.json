@@ -1,6 +1,7 @@
 {
   "filePath": "/config.dat",
-  "fields": {
+
+    "fields": {
     "encryption": {
       "type": "bitmask",
       "length": 3,

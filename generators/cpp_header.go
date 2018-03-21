@@ -10,7 +10,7 @@ import (
 
 type CppHeaderGenerator struct{}
 
-func Type(name string, fieldType interface{}) string {
+func fieldType(name string, fieldType interface{}) string {
   switch fieldType.(type) {
     case fields.Boolean:
       return fmt.Sprintf("bool %s;", name)
@@ -27,7 +27,7 @@ func Type(name string, fieldType interface{}) string {
 
 }
 
-func Getter(name string, fieldType interface{}) string {
+func getter(name string, fieldType interface{}) string {
   switch fieldType.(type) {
     case fields.Boolean:
       return fmt.Sprintf("bool get_%s();", name)
@@ -45,7 +45,7 @@ func Getter(name string, fieldType interface{}) string {
 
 
 
-func Setter(name string, fieldType interface{}) string {
+func setter(name string, fieldType interface{}) string {
   switch fieldType.(type) {
     case fields.Boolean:
       return fmt.Sprintf("void set_%s(bool val);", name)
@@ -63,9 +63,9 @@ func Setter(name string, fieldType interface{}) string {
 
 func (g CppHeaderGenerator) Generate(descriptor *descriptor.Descriptor) {
   funcMap := template.FuncMap{
-    "type": Type,
-    "getter": Getter,
-    "setter": Setter,
+    "type": fieldType,
+    "getter": getter,
+    "setter": setter,
   }
   tmpl, parseError := template.New("cpp_header").Funcs(funcMap).ParseFiles("templates/cpp_header.tmpl")
 
@@ -73,7 +73,7 @@ func (g CppHeaderGenerator) Generate(descriptor *descriptor.Descriptor) {
 		panic(parseError)
 	}
 
-	executeErr := tmpl.ExecuteTemplate(os.Stdout, "cpp_header.tmpl", descriptor.Fields)
+	executeErr := tmpl.ExecuteTemplate(os.Stdout, "cpp_header.tmpl", descriptor)
   if executeErr != nil {
 		panic(executeErr)
 	}
