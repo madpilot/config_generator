@@ -31,8 +31,8 @@ func Generate(file string) {
 		switch fieldType {
 		case "bitmask":
 			newField = fields.BitMask{
-				Default: int(iface["default"].(float64)),
-				Length:  int(iface["length"].(float64)),
+				Default: uint8(iface["default"].(float64)),
+				Length:  uint8(iface["length"].(float64)),
 			}
 			break
 		case "boolean":
@@ -61,4 +61,7 @@ func Generate(file string) {
 
   cppHeader := &generators.CppHeaderGenerator{}
   cppHeader.Generate(&descriptor)
+
+  cppSource := &generators.CppSourceGenerator{}
+  cppSource.Generate(&descriptor)
 }

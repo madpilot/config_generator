@@ -1,8 +1,8 @@
 package fields
 
 type BitMask struct {
-	Length  int `json:"length"`
-	Default int `json:"default"`
+	Length  uint8 `json:"length"`
+	Default uint8 `json:"default"`
 }
 
 type Boolean struct {
